@@ -3,7 +3,7 @@ import {
 } from 'loom-js'
 import BN from 'bn.js'
 import Web3 from 'web3'
-import SimpleStore from './contracts/SimpleStore.json'
+import SimpleStore from './abis/SimpleStore.json'
 
 export default class Contract {
   async loadContract() {
@@ -20,7 +20,7 @@ export default class Contract {
     let writeUrl = 'ws://127.0.0.1:46658/websocket'
     let readUrl = 'ws://127.0.0.1:46658/queryws'
     let networkId = 'default'
-    if (process.env.NETWORK == 'extdev') {
+    if (process.env.NETWORK === 'extdev') {
       writeUrl = 'ws://extdev-plasma-us1.dappchains.com:80/websocket'
       readUrl = 'ws://extdev-plasma-us1.dappchains.com:80/queryws'
       networkId = 'extdev-plasma-us1'
@@ -80,7 +80,7 @@ export default class Contract {
 
   _getCurrentNetwork() {
 
-    if (process.env.NETWORK == 'extdev') {
+    if (process.env.NETWORK === 'extdev') {
       return '9545242630824'
     }
     else {
@@ -95,7 +95,7 @@ export default class Contract {
 
   async setValue(value) {
     // Just a small test with Loomy
-    if (value == 47) {
+    if (value === 47) {
       return await this.simpleStoreInstance.methods.setAgain(value).send({
         from: this.currentUserAddress
       })

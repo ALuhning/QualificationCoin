@@ -20,7 +20,7 @@ const Index = class Index extends React.Component {
     }
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.contract.loadContract()
     this.contract.addEventListener((v) => {
       this.setState({ value: v._value })

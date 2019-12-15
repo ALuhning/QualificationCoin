@@ -21,6 +21,7 @@
     "loom:run": "cd loom && ./loom run && cd .."
   },
   "dependencies": {
+    "@binance-chain/javascript-sdk": "^2.16.2",
     "bip39": "^3.0.2",
     "bn.js": "^5.0.0",
     "commander": "^4.0.1",
@@ -34,6 +35,8 @@
     "@truffle/hdwallet-provider": "^1.0.27",
     "truffle-privatekey-provider": "^1.3.0",
     "web3": "^1.2.4",
+    "web3-eth-accounts": "^1.2.4",
+    "web3-eth": "^1.2.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",

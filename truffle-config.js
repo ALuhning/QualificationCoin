@@ -1,9 +1,13 @@
+require('@babel/register');
+require('@babel/polyfill');
+require('dotenv').config();
+
 // @format
 const { readFileSync } = require('fs')
 const path = require('path')
 const { join } = require('path')
 const LoomTruffleProvider  = require ('loom-truffle-provider')
-const HDWalletProvider = require('truffle-hdwallet-provider')
+const HDWalletProvider = require('@truffle/hdwallet-provider')
 const { sha256 } = require ('js-sha256')
 const { CryptoUtils } = require ('loom-js')
 const { mnemonicToSeedSync } = require ('bip39')
@@ -24,10 +28,17 @@ function getLoomProviderWithMnemonic (mnemonicPath, chainId, writeUrl, readUrl) 
 }
 
 module.exports = {
-  contracts_build_directory: join(__dirname, './src/contracts'),
+  //contracts_build_directory: join(__dirname, './src/contracts'),
   compilers: {
     solc: {
-      version: '0.5.0'
+      version: '0.5.7',
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200
+        },
+        emVersion: 'constantinople',
+      }
     }
   },
   networks: {
@@ -121,5 +132,7 @@ module.exports = {
       gasPrice: 15000000001,
       skipDryRun: true
     }
-  }
+  },
+  contracts_directory: './src/contracts',
+  contracts_build_directory: './src/abis',
 }
